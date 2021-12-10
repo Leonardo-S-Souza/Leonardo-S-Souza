@@ -1,0 +1,41 @@
+
+name: Demo
+on: 
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment:
+      name: dev
+      url: 'dati.com.br'
+      needs: build
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+deploy-hmg:
+    runs-on: ubuntu-latest
+    environment:
+      name: hmg
+      url: 'dati.com.br'
+      needs: build
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+deploy-prd:
+    runs-on: ubuntu-latest
+    environment:
+      name: prd
+      url: 'dati.com.br'
+      needs: deploy-hmg
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!
