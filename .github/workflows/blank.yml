@@ -25,7 +25,7 @@ deploy-hmg:
     environment:
       name: hmg
       url: 'dati.com.br'
-      needs: build
+      needs: deploy-dev
     steps:
       - name: Run a one-line script
         run: echo Hello, world!
